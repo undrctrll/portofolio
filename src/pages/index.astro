@@ -1,0 +1,304 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('page-loader');
+      const mainContent = document.getElementById('main-content');
+      setTimeout(() => {
+        if (loader) loader.classList.add('opacity-0', 'pointer-events-none');
+        if (mainContent) mainContent.classList.remove('opacity-0');
+      }, 1000);
+    });
+  }
+</script>
+
+<style>
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+.fade-in-up {
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.fade-in-up-delay-1 { animation-delay: 0.2s; }
+.fade-in-up-delay-2 { animation-delay: 0.4s; }
+.fade-in-up-delay-3 { animation-delay: 0.6s; }
+.float-anim { animation: float 3.5s ease-in-out infinite; }
+.page-loader {
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 9999;
+}
+#main-content {
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+</style>
+
+<Layout title="Portfolio Saya">
+	<Navbar />
+	<main class="container mx-auto px-4 py-24">
+		<!-- Hero Section -->
+		<section class="min-h-[90vh] flex flex-col justify-center">
+			<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+				<!-- Kiri: Teks -->
+				<div class="flex-[1.3]">
+					<p class="text-2xl md:text-3xl font-semibold text-slate-400 mb-4 fade-in-up fade-in-up-delay-1">hi, im Rasya <span class="inline-block">👋</span></p>
+					<h1 class="text-4xl md:text-7xl font-extrabold leading-[1.08] text-white mb-6 fade-in-up fade-in-up-delay-2">
+						im a junior<br />
+						<span class="relative inline-block">
+							<span class="bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 bg-clip-text text-transparent px-2 rounded-md transition-transform duration-300 hover:scale-110 cursor-pointer">web developer.</span>
+						</span><br />
+						who loves to build<br />
+						websites and web<br />
+						applications.
+					</h1>
+					<p class="mt-10 text-xl md:text-2xl text-slate-400 max-w-2xl font-medium fade-in-up fade-in-up-delay-3">
+						partially i build some mobile apps using <span class="font-bold text-white">react native</span> too. <span class="align-middle">😋</span>
+					</p>
+				</div>
+				<!-- Kanan: Ilustrasi -->
+				<div class="flex flex-1 justify-center md:justify-end mt-10 md:mt-0">
+					<img src="https://buat.web.id/wp-content/uploads/2020/03/Web-Developer-Terbaik-Di-Indonesia.svg" alt="Ilustrasi coding" class="w-[320px] md:w-[620px] float-anim" loading="lazy" />
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section id="projects" class="py-20">
+			<h2 class="text-2xl md:text-3xl font-bold mb-12 text-center tracking-tight">Project Terbaru</h2>
+			<div class="flex flex-col gap-20">
+				<!-- Project 1 -->
+				<!-- <div class="group flex flex-col items-center">
+					<div class="w-full flex justify-center">
+						<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-[16/8] rounded-3xl overflow-hidden shadow-2xl bg-[#22304d] group-hover:scale-105 transition-transform duration-300">
+							<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Project 1" class="object-cover w-full h-full" />
+						</div>
+					</div>
+					<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gradient-to-b from-[#1e293b]/90 via-[#22304d]/90 to-transparent rounded-2xl p-8 -mt-10 relative z-10 shadow-xl group-hover:-translate-y-2 transition-all duration-300">
+						<h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">TG Connect</h3>
+						<div class="flex flex-wrap gap-2 mb-3">
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-100 text-cyan-700">React Native</span>
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Laravel</span>
+						</div>
+						<p class="text-slate-300 mb-6 text-base">Sistem monitoring dan pengumpulan data dengan fitur berbagi laporan dan informasi. Dibangun dengan React Native & Laravel REST API.</p>
+						<div class="mb-4">
+							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
+							<div class="flex gap-4 items-center">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" class="w-12 h-12" title="React Native" />
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
+							</div>
+						</div>
+						<a href="https://github.com/username/tg-connect" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white-400 font-bold hover:underline text-sm">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+							Github
+						</a>
+					</div>
+				</div> -->
+				<!-- Project 2 -->
+				<div class="group flex flex-col items-center">
+					<div class="w-full flex justify-center">
+						<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-[16/8] rounded-3xl overflow-hidden shadow-2xl bg-[#22304d] group-hover:scale-105 transition-transform duration-300">
+							<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Project 2" class="object-cover w-full h-full" />
+						</div>
+					</div>
+					<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gradient-to-b from-[#312e81]/90 via-[#22304d]/90 to-transparent rounded-2xl p-8 -mt-10 relative z-10 shadow-xl group-hover:-translate-y-2 transition-all duration-300">
+						<h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Bantu Peduli</h3>
+						<div class="flex flex-wrap gap-2 mb-3">
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Laravel</span>
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-100 text-cyan-700">Tailwind CSS</span>
+						</div>
+						<p class="text-slate-300 mb-6 text-base">Bantu Peduli adalah website donasi yang dibuat untuk mempermudah masyarakat dalam membantu anak-anak di panti asuhan. Lewat platform ini, pengguna dapat berdonasi dengan transparan, mengetahui kebutuhan masing-masing panti, serta mengikuti update perkembangan bantuan yang diberikan. Dibangun dengan Laravel & Tailwind CSS.</p>
+						<div class="mb-4">
+							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
+							<div class="flex gap-4 items-center">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
+							</div>
+						</div>
+						<a href="https://github.com/username/cazh-service" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white-400 font-bold hover:underline text-sm">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+							Github
+						</a>
+					</div>
+				</div>
+				<!-- Project 3 -->
+				<div class="group flex flex-col items-center">
+					<div class="w-full flex justify-center">
+						<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-[16/8] rounded-3xl overflow-hidden shadow-2xl bg-[#22304d] group-hover:scale-105 transition-transform duration-300">
+							<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Project 3" class="object-cover w-full h-full" />
+						</div>
+					</div>
+					<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gradient-to-b from-[#312e81]/90 via-[#22304d]/90 to-transparent rounded-2xl p-8 -mt-10 relative z-10 shadow-xl group-hover:-translate-y-2 transition-all duration-300">
+						<h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Dolan Cilacap</h3>
+						<div class="flex flex-wrap gap-2 mb-3">
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">Laravel</span>
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">Tailwind CSS</span>
+						</div>
+						<p class="text-slate-300 mb-6 text-base">Website informasi wisata dan kuliner di kota cilacap, review destinasi, dan artikel. Dibangun dengan Laravel & Tailwind CSS.</p>
+						<div class="mb-4">
+							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
+							<div class="flex gap-4 items-center">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
+							</div>
+						</div>
+						<a href="https://github.com/username/yuhdolan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white-400 font-bold hover:underline text-sm">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+							Github
+						</a>
+					</div>
+				</div>
+				<!-- Project 4 -->
+				<div class="group flex flex-col items-center">
+					<div class="w-full flex justify-center">
+						<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-[16/8] rounded-3xl overflow-hidden shadow-2xl bg-[#22304d] group-hover:scale-105 transition-transform duration-300">
+							<img src="public/pln.png" alt="Project 3" class="object-cover w-full h-full" />
+						</div>
+					</div>
+					<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gradient-to-b from-[#312e81]/90 via-[#22304d]/90 to-transparent rounded-2xl p-8 -mt-10 relative z-10 shadow-xl group-hover:-translate-y-2 transition-all duration-300">
+						<h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Data PLN UP3 Karawang</h3>
+						<div class="flex flex-wrap gap-2 mb-3">
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">Laravel</span>
+							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">Tailwind CSS</span>
+						</div>
+						<p class="text-slate-300 mb-6 text-base">Website untuk merekap data kinerja pegawai yang ada di PLN UP3 Karawang. Dibangun dengan Laravel & Tailwind CSS.</p>
+						<div class="mb-4">
+							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
+							<div class="flex gap-4 items-center">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
+							</div>
+						</div>
+						<a href="https://github.com/username/yuhdolan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white-400 font-bold hover:underline text-sm">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+							Github
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience Section -->
+		<section id="experience" class="py-24">
+			<h2 class="text-3xl md:text-4xl font-extrabold mb-16 text-center tracking-tight">Experience</h2>
+			<div class="relative max-w-3xl mx-auto">
+				<!-- Garis timeline vertikal -->
+				<div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-purple-400 to-yellow-300 -translate-x-1/2"></div>
+				<div class="flex flex-col gap-24 relative z-10">
+					<!-- Experience 1 -->
+					<div class="flex flex-col md:flex-row items-center md:items-start gap-12 group">
+						<div class="flex flex-col items-center md:items-center w-full md:w-1/2">
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white text-4xl shadow-lg border-4 border-white group-hover:scale-110 transition-transform duration-300">
+								🎓
+							</div>
+							<span class="mt-4 text-xl font-bold text-cyan-400">2020-2023</span>
+						</div>
+						<div class="w-full md:w-1/2">
+							<div class="bg-white/10 backdrop-blur rounded-3xl shadow-lg p-10 flex flex-col">
+								<span class="text-2xl font-extrabold text-cyan-400 mb-2">Web Development</span>
+								<span class="text-lg text-slate-200 font-semibold mb-2">SMP Muhammadiyah 1 Cilacap</span>
+								<span class="text-base text-slate-400 mb-4">2020 - 2023</span>
+								<p class="text-slate-300 text-lg leading-relaxed">Membantu memanage untuk bagian website PPDB, Memelihara Website</p>
+							</div>
+						</div>
+					</div>
+					<!-- Experience 2 -->
+					<div class="flex flex-col md:flex-row items-center md:items-start gap-12 group">
+						<div class="flex flex-col items-center md:items-center w-full md:w-1/2">
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-4xl shadow-lg border-4 border-white group-hover:scale-110 transition-transform duration-300">
+								🎓
+							</div>
+							<span class="mt-4 text-xl font-bold text-purple-400">2023-2026</span>
+						</div>
+						<div class="w-full md:w-1/2">
+							<div class="bg-white/10 backdrop-blur rounded-3xl shadow-lg p-10 flex flex-col">
+								<span class="text-2xl font-extrabold text-purple-400 mb-2">Fullstack Development</span>
+								<span class="text-lg text-slate-200 font-semibold mb-2">SMK Telkom Purwokerto</span>
+								<span class="text-base text-slate-400 mb-4">2023 - 2026</span>
+								<p class="text-slate-300 text-lg leading-relaxed">Membangun Project Website PLN UP3 Karawang.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Experience 3 -->
+					<!-- <div class="flex flex-col md:flex-row items-center md:items-start gap-12 group">
+						<div class="flex flex-col items-center md:items-center w-full md:w-1/2">
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-300 to-green-300 flex items-center justify-center text-slate-900 text-4xl shadow-lg border-4 border-white group-hover:scale-110 transition-transform duration-300">
+								💼
+							</div>
+							<span class="mt-4 text-xl font-bold text-yellow-300">Jul-Sep 2023</span>
+						</div>
+						<div class="w-full md:w-1/2">
+							<div class="bg-white/10 backdrop-blur rounded-3xl shadow-lg p-10 flex flex-col">
+								<span class="text-2xl font-extrabold text-yellow-300 mb-2">Software Engineer Intern</span>
+								<span class="text-lg text-slate-200 font-semibold mb-2">bantupeduli.id</span>
+								<span class="text-base text-slate-400 mb-4">Jul 2023 - Sep 2023</span>
+								<p class="text-slate-300 text-lg leading-relaxed">Mengembangkan aplikasi web internal perusahaan menggunakan teknologi modern dan kolaborasi tim.</p>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section id="contact" class="py-20">
+			<h2 class="text-2xl md:text-3xl font-bold mb-12 text-center tracking-tight">Hubungi Saya</h2>
+			<div class="max-w-2xl mx-auto">
+				<form class="space-y-6">
+					<div>
+						<label for="name" class="block text-sm font-medium mb-2">Nama</label>
+						<input
+							type="text"
+							id="name"
+							class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent font-light"
+						/>
+					</div>
+					<div>
+						<label for="email" class="block text-sm font-medium mb-2">Email</label>
+						<input
+							type="email"
+							id="email"
+							class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent font-light"
+						/>
+					</div>
+					<div>
+						<label for="message" class="block text-sm font-medium mb-2">Pesan</label>
+						<textarea
+							id="message"
+							rows="4"
+							class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent font-light"
+						></textarea>
+					</div>
+					<button
+						type="submit"
+						class="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium"
+					>
+						Kirim Pesan
+					</button>
+				</form>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<div id="page-loader" class="page-loader fixed inset-0 flex flex-col items-center justify-center bg-[#0f172a] text-white text-2xl font-bold gap-4">
+  <svg class="animate-spin w-12 h-12 text-cyan-400" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+  </svg>
+  Loading...
+</div>
+<div id="main-content" class="opacity-0">
