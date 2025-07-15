@@ -42,6 +42,21 @@ import Navbar from '../components/Navbar.astro';
 #main-content {
   transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
+@media (max-width: 768px) {
+  .mobile-hide-svg {
+    display: none !important;
+  }
+  .tech-icons img {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
+  }
+  .tech-icons {
+    gap: 12px;
+  }
+}
 </style>
 
 <Layout title="Portfolio Saya">
@@ -52,7 +67,7 @@ import Navbar from '../components/Navbar.astro';
 			<div class="flex flex-col md:flex-row items-center justify-between gap-8">
 				<!-- Kiri: Teks -->
 				<div class="flex-[1.3]">
-					<p class="text-2xl md:text-3xl font-semibold text-slate-400 mb-4 fade-in-up fade-in-up-delay-1">hi, im Rasya <span class="inline-block">👋</span></p>
+					<p class="text-2xl md:text-3xl font-semibold text-slate-400 mb-4 fade-in-up fade-in-up-delay-1">hi, im Rasya Saehan <span class="inline-block">👋</span></p>
 					<h1 class="text-4xl md:text-7xl font-extrabold leading-[1.08] text-white mb-6 fade-in-up fade-in-up-delay-2">
 						im a junior<br />
 						<span class="relative inline-block">
@@ -68,7 +83,7 @@ import Navbar from '../components/Navbar.astro';
 				</div>
 				<!-- Kanan: Ilustrasi -->
 				<div class="flex flex-1 justify-center md:justify-end mt-10 md:mt-0">
-					<img src="https://buat.web.id/wp-content/uploads/2020/03/Web-Developer-Terbaik-Di-Indonesia.svg" alt="Ilustrasi coding" class="w-[320px] md:w-[620px] float-anim" loading="lazy" />
+					<img src="https://buat.web.id/wp-content/uploads/2020/03/Web-Developer-Terbaik-Di-Indonesia.svg" alt="Ilustrasi coding" class="w-[320px] md:w-[620px] float-anim mobile-hide-svg" loading="lazy" />
 				</div>
 			</div>
 		</section>
@@ -77,33 +92,6 @@ import Navbar from '../components/Navbar.astro';
 		<section id="projects" class="py-20">
 			<h2 class="text-2xl md:text-3xl font-bold mb-12 text-center tracking-tight">Project Terbaru</h2>
 			<div class="flex flex-col gap-20">
-				<!-- Project 1 -->
-				<!-- <div class="group flex flex-col items-center">
-					<div class="w-full flex justify-center">
-						<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-[16/8] rounded-3xl overflow-hidden shadow-2xl bg-[#22304d] group-hover:scale-105 transition-transform duration-300">
-							<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Project 1" class="object-cover w-full h-full" />
-						</div>
-					</div>
-					<div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-gradient-to-b from-[#1e293b]/90 via-[#22304d]/90 to-transparent rounded-2xl p-8 -mt-10 relative z-10 shadow-xl group-hover:-translate-y-2 transition-all duration-300">
-						<h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">TG Connect</h3>
-						<div class="flex flex-wrap gap-2 mb-3">
-							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-100 text-cyan-700">React Native</span>
-							<span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Laravel</span>
-						</div>
-						<p class="text-slate-300 mb-6 text-base">Sistem monitoring dan pengumpulan data dengan fitur berbagi laporan dan informasi. Dibangun dengan React Native & Laravel REST API.</p>
-						<div class="mb-4">
-							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
-							<div class="flex gap-4 items-center">
-								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" class="w-12 h-12" title="React Native" />
-								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
-							</div>
-						</div>
-						<a href="https://github.com/username/tg-connect" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white-400 font-bold hover:underline text-sm">
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
-							Github
-						</a>
-					</div>
-				</div> -->
 				<!-- Project 2 -->
 				<div class="group flex flex-col items-center">
 					<div class="w-full flex justify-center">
@@ -120,7 +108,7 @@ import Navbar from '../components/Navbar.astro';
 						<p class="text-slate-300 mb-6 text-base">Bantu Peduli adalah website donasi yang dibuat untuk mempermudah masyarakat dalam membantu anak-anak di panti asuhan. Lewat platform ini, pengguna dapat berdonasi dengan transparan, mengetahui kebutuhan masing-masing panti, serta mengikuti update perkembangan bantuan yang diberikan. Dibangun dengan Laravel & Tailwind CSS.</p>
 						<div class="mb-4">
 							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
-							<div class="flex gap-4 items-center">
+							<div class="flex gap-4 items-center tech-icons">
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
 								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
@@ -148,7 +136,7 @@ import Navbar from '../components/Navbar.astro';
 						<p class="text-slate-300 mb-6 text-base">Website informasi wisata dan kuliner di kota cilacap, review destinasi, dan artikel. Dibangun dengan Laravel & Tailwind CSS.</p>
 						<div class="mb-4">
 							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
-							<div class="flex gap-4 items-center">
+							<div class="flex gap-4 items-center tech-icons">
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
 								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
@@ -176,7 +164,7 @@ import Navbar from '../components/Navbar.astro';
 						<p class="text-slate-300 mb-6 text-base">Website untuk merekap data kinerja pegawai yang ada di PLN UP3 Karawang. Dibangun dengan Laravel & Tailwind CSS.</p>
 						<div class="mb-4">
 							<span class="block text-sm font-bold text-slate-400 mb-2">Featured technology used:</span>
-							<div class="flex gap-4 items-center">
+							<div class="flex gap-4 items-center tech-icons">
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" alt="Laravel" class="w-12 h-12" title="Laravel" />
 								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Tailwind CSS" class="w-12 h-12" title="Tailwind CSS" />
 								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-12 h-12" title="MySQL" />
